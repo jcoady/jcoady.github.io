@@ -27,6 +27,7 @@
 <body>
   <h1>Compiling LaTeX</h1>
 
+<!--
   <latex-js baseURL="https://cdn.jsdelivr.net/npm/latex.js/dist/">
     \documentclass{article}
 
@@ -34,7 +35,40 @@
     Hello World.
     \end{document}
   </latex-js>
+-->
 
+  <latex-js baseURL="https://cdn.jsdelivr.net/npm/latex.js/dist/">
+  \documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[table]{xcolor}
+\usepackage{amsmath, amsthm, amsfonts, url, graphicx, tikz, geometry, hyperref, cleveref, array, lipsum}
+\usepackage{amsmath, amssymb, graphics, setspace, float}
+\usetikzlibrary{positioning, calc}
+\usepackage{xcolor}
+
+
+    \begin{document}
+    Hello World.
+	\begin{figure}
+    \centering
+    \begin{tikzpicture}[scale = 3, pin distance=1mm, PT/.style args={[#1]#2}{circle,draw=black,fill=red,scale=0.5,label={[red,#1]#2}}]
+    \draw [blue] (0,0) circle [radius=1];
+    \node[PT={[above right,scale=1.0]{\Large $\text{a}_{\text{1}}$}}] (a1) at (-3/5,3/5) {};
+    \node[PT={[above, scale=1.0]{\Large $\text{a}_{\text{2}}$}}] (a2) at (4/5,0) {};
+    \node[PT={[below left, scale=1.0]{\Large $\text{a}_{\text{3}}$}}] (a3) at (2/5,-4/5) {};
+    \draw (a1) to node[above right] {{\large $\text{q}_{\text{3}}$}} (a2);
+    \draw (a2) to node[right] {{\large $\text{q}_{\text{1}}$}} (a3);
+    \draw (a3) to node[below left] {{\large $\text{q}_{\text{2}}$}} (a1);
+    \draw node [pin={[pin edge={dotted},pin distance=2mm]328:S1}] at (a1) {};
+    \draw node [pin={[pin edge={dotted},pin distance=1mm]190:S2}] at (a2) {};
+    \draw node [pin={[pin edge={dotted},pin distance=2mm]90:S3}] at (a3) {};
+    \end{tikzpicture}
+    \caption{Standard Triangle 1}
+    \label{fig:ST1}
+\end{figure}
+
+    \end{document}
+  </latex-js>
 
   <latex-js hyphenate="false">
     Another.
